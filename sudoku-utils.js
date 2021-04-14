@@ -57,12 +57,9 @@ Module().then(function (mymod) {
   solveBtn.onclick = () => {
     let arrPtr = makePtrOfArray(mymod);
     let startDate = window.performance.now();
-    const inputPtr = mymod._initSudoku(arrPtr);
-    let inputMatrix = getArrayFromPtr(mymod, inputPtr);
-    let solverResult = mymod._SolveSudoku(inputPtr);
-    let resultMatrixPtr = mymod._returnSudoku();
+    let solverResult = mymod._SolveSudoku(arrPtr);
     let endDate = window.performance.now();
-    let resultMatrix = getArrayFromPtr(mymod, resultMatrixPtr);
+    let resultMatrix = getArrayFromPtr(mymod, arrPtr);
     setSudokuGrid(resultMatrix);
     alert(`${solverResult ? 'Solved!': 'No results found'} Excecution time: ${(endDate - startDate)} ms`);
   }

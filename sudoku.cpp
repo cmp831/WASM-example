@@ -148,26 +148,6 @@ void printGrid(uint32_t **grid)
         cout << endl;
     }
 }
-
-extern "C" {
-  /* function to return the Sudoku Grid */
-  EMSCRIPTEN_KEEPALIVE
-  uint32_t **returnSudoku() {
-    return grid;
-  }
-
-  EMSCRIPTEN_KEEPALIVE
-  uint32_t **initSudoku(uint32_t** ptr) {
-    grid = (uint32_t**)calloc(N, sizeof(*grid));
-    for(int i = 0; i < N; i++) {
-      grid[i] = (uint32_t*)calloc(N, sizeof(*grid[i]));
-      for (int j = 0; j < N; j++) {
-        grid[i][j] = ptr[i][j];
-      }
-    }
-    return grid;
-  }
-}
  
 // Driver Code
 int main()
